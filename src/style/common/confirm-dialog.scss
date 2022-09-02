@@ -1,0 +1,46 @@
+.MuiDialogActions-root {
+  justify-content: space-around !important;
+  padding: 0 8px !important;
+
+  & .MuiButtonBase-root {
+    text-transform: none;
+    font-weight: 600;
+  }
+
+  & .dialog-cancel {
+    width: 100%;
+    text-align: center;
+  }
+
+  & .dialog-confirm {
+    width: 100%;
+    text-align: center;
+  }
+
+  & .vline {
+    border-left: solid 1px #cccccc;
+    height: 52px;
+  }
+}
+
+.MuiDialogContent-root {
+  & .agentDialogWrap {
+    padding: 10px 0px 5px 0px;
+  }
+  & .agentSvg {
+    text-align: center;
+  }
+
+  & .agentMessage {
+    text-align: center;
+    color: #656565;
+    font-size: 25px;
+    padding: 10px 0;
+  }
+
+  & .agentName {
+    text-align: center;
+    color: #202020;
+    font-size: 25px;
+  }
+}

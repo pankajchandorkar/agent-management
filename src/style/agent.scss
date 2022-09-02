@@ -1,0 +1,27 @@
+.agent_management_container {
+  .agent_tabs_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: solid 1px #d9d9d9;
+
+    .agent_tab {
+      padding: 17px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #444444;
+      cursor: pointer;
+      height: 47px;
+      text-align: center;
+    }
+
+    .agent_tab.active {
+      color: #0086ff;
+      border-bottom: solid 5px #0086ff;
+    }
+  }//.agent_tabs_wrapper
+
+  .agent_tabs_content {
+  }
+}//.agent_management_container
