@@ -424,12 +424,78 @@ function AgentFilter({ handelSearchBtnClick }) {
     }
 
     const getAgentData = (flag) => {
-        /* handelSearchBtnClick props sent from parent component */
+
+        let filter = {};
         if (flag === 1) {
-            handelSearchBtnClick({ ...agentBasicFilters });
+            filter = { ...agentBasicFilters };
         } else if (flag === 2) {
-            handelSearchBtnClick({ ...agentBasicFilters, ...agentAdvanceFilters });
+            filter = { ...agentBasicFilters, ...agentAdvanceFilters };
         }
+
+        let agentDataFilter = {};
+
+        if (filter.countryName != "" && filter.countryId != "") {
+            agentDataFilter = { ...agentDataFilter, 'country': filter.countryName }
+        }
+
+        if (filter.stateName != "" && filter.stateId != "") {
+            agentDataFilter = { ...agentDataFilter, 'state': filter.stateName }
+        }
+
+        if (filter.cityName != "" && filter.cityId != "") {
+            agentDataFilter = { ...agentDataFilter, 'city': filter.cityName }
+        }
+
+        if (filter.status != "All" && filter.statusId != "-1") {
+            agentDataFilter = { ...agentDataFilter, 'status': filter.status }
+        }
+
+        if (filter.agentName != "" && filter.agentName != "") {
+            agentDataFilter = { ...agentDataFilter, 'name': filter.agentName }
+        }
+
+        if (filter.agentCode != "") {
+            agentDataFilter = { ...agentDataFilter, 'code': filter.agentCode }
+        }
+
+        if (filter.agentMobile != "") {
+            agentDataFilter = { ...agentDataFilter, 'mobile': filter.agentMobile }
+        }
+
+        if (filter.agentEmail != "") {
+            agentDataFilter = { ...agentDataFilter, 'email': filter.agentEmail }
+        }
+
+        if (filter.agentType != "") {
+            agentDataFilter = { ...agentDataFilter, 'agentType': filter.agentType }
+        }
+
+        if (filter.paymentType != "") {
+            agentDataFilter = { ...agentDataFilter, 'paymentType': filter.paymentType }
+        }
+
+        if (filter.commType != "") {
+            agentDataFilter = { ...agentDataFilter, 'commType': filter.commType }
+        }
+
+        if (filter.creditLimit != "") {
+            agentDataFilter = { ...agentDataFilter, 'credit': filter.creditLimit }
+        }
+
+        if (filter.bookingVisiblity != "") {
+            agentDataFilter = { ...agentDataFilter, 'bookingVisiblity': filter.bookingVisiblity }
+        }
+
+        if (filter.isBlacklisted != "") {
+            agentDataFilter = { ...agentDataFilter, 'isBlacklisted': filter.isBlacklisted }
+        }
+
+        if (filter.outstandingCredit != "") {
+            agentDataFilter = { ...agentDataFilter, 'outstandingCredit': filter.outstandingCredit }
+        }
+
+        /* handelSearchBtnClick props sent from parent component */
+        handelSearchBtnClick(agentDataFilter);
     }
 
     const resetAgentFilter = () => {

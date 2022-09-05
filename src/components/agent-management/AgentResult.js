@@ -5,7 +5,9 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
-import {Paper } from "@mui/material";
+import api from "../../api/api";
+
+import { Paper } from "@mui/material";
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
 import AgentTableHead from "./AgentTableHead";
@@ -111,20 +113,27 @@ const AgentResult = ({ agentResult }) => {
       // Process Toggle Agent Status
 
       let agentRows = [...tableData];
+      let agentStatusRows = agentRows.filter((row, index) => row.id === agentToggleStatusId)[0];
+      let newStatus = agentStatusRows.status === "Active" ? "Inactive" : "Active";
 
-      agentRows.map((row, index) => {
-        if (row.id === agentToggleStatusId) {
-          row.status =
-            row.status === "Active" ? "Inactive" : "Active";
-        }
+      const response = await api.put("/agents/" + agentToggleStatusId, {
+        ...agentStatusRows, status: newStatus
       });
 
-      setTableData(agentRows);
+      setTableData(agentRows.map((row, index) => {
+        if (row.id === agentToggleStatusId) {
+          return response.data;
+        } else {
+          return row;
+        }
+      }));
+
       setAgentToggleStatusId(null);
     }
   };
 
   const handelAgentStatus = (forAgentRow) => {
+
     setAgentToggleStatusId(forAgentRow.id);
 
     let message = (
