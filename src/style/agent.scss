@@ -20,8 +20,32 @@
       color: #0086ff;
       border-bottom: solid 5px #0086ff;
     }
-  }//.agent_tabs_wrapper
+  } //.agent_tabs_wrapper
 
   .agent_tabs_content {
   }
-}//.agent_management_container
+
+  .cross--icon {
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    cursor: pointer;
+    background: #fff;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+
+    .cross {
+      position: relative;
+      left: 9px;
+      top: 4px;
+      .svg-inline--fa {
+        height: 1.2em !important;
+      }
+    }
+
+    &:hover {
+      background: #f1f1f1;
+    }
+  }
+} //.agent_management_container

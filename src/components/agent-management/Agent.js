@@ -3,6 +3,8 @@ import { Grid } from '@mui/material';
 
 import "../../style/agent.scss";
 import ViewAgents from "./ViewAgents";
+import AddAgents from "./AddAgents";
+import AddPersonalAgents from "./AddPersonalAgents";
 
 function Agent() {
 
@@ -17,18 +19,26 @@ function Agent() {
               className={"agent_tab " + (tab === "viewAgent" ? "active" : "")}
               onClick={() => setTab("viewAgent")}
             >
-              VIEW / ADD AGENTS
+              VIEW / EDIT AGENTS
             </div>
           </Grid>
-          <Grid item xs={12} sm={4} md={2.2} >
+          <Grid item xs={12} sm={4} md={1.1} >
             <div
-              className={"agent_tab " + (tab === "newAgent" ? "active" : "")}
-              onClick={() => setTab("newAgent")}
+              className={"agent_tab " + (tab === "addAgent" ? "active" : "")}
+              onClick={() => setTab("addAgent")}
             >
-              CREATE NEW PERSONAL AGENT
+              ADD AGENTS
             </div>
           </Grid>
           <Grid item xs={12} sm={4} md={1.7} >
+            <div
+              className={"agent_tab " + (tab === "addPersonalAgent" ? "active" : "")}
+              onClick={() => setTab("addPersonalAgent")}
+            >
+              ADD PERSONAL AGENTS
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={4} md={1.6} >
             <div
               className={"agent_tab " + (tab === "voucher" ? "active" : "")}
               onClick={() => setTab("voucher")}
@@ -44,7 +54,7 @@ function Agent() {
               RECHARGE PREPAID AGENTS
             </div>
           </Grid>
-          <Grid item xs={12} sm={4} md={0.8} >
+          <Grid item xs={12} sm={4} md={0.7} >
             <div
               className={"agent_tab " + (tab === "report" ? "active" : "")}
               onClick={() => setTab("report")}
@@ -52,14 +62,15 @@ function Agent() {
               REPORTS
             </div>
           </Grid>
-          <Grid item xs={12} sm={4} md={3.8} >
+          <Grid item xs={12} sm={4} md={3.4} >
             &nbsp;
           </Grid>
         </Grid>
       </div>
       <div className="agent_tabs_content">
         {tab === "viewAgent" && (<ViewAgents />)}
-        {tab === "newAgent" && "CREATE NEW PERSONAL AGENT"}
+        {tab === "addAgent" && (<AddAgents />)}
+        {tab === "addPersonalAgent" && (<AddPersonalAgents />)}
         {tab === "voucher" && " VIEW & SEND VOUCHER"}
         {tab === "recharge" && "RECHARGE PREPAID AGENTS"}
         {tab === "report" && "REPORTS"}
