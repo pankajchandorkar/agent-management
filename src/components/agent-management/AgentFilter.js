@@ -542,7 +542,7 @@ function AgentFilter({ handelSearchBtnClick }) {
                         <Button variant="contained" size="medium" className="btn-orange" onClick={() => getAgentData(1)}>Go</Button>
                     </Grid>
                     <Grid item xs={6} sm={4} md={1} className="filterLinkWrap">
-                        <Link href="#" rel="noopener" className="filterLink" onClick={toggleMoreFilter}>
+                        <Link  href="#" rel="noopener" className="filterLink" onClick={toggleMoreFilter}>
                             {toggleFilter ? "Close Filters" : "More Filters"}
                             {toggleFilter ? <FontAwesomeIcon icon={faCaretUp} color={"#036ECE"} className="filterLinkIcon" /> : <FontAwesomeIcon icon={faCaretDown} color={"#036ECE"} className="filterLinkIcon" />}
                         </Link>

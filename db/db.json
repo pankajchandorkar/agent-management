@@ -342,5 +342,43 @@
       "credit": "₹ 5000",
       "createdDt": "2022-08-25"
     }
+  ],
+  "collectionBoys": [
+    {
+      "id": 1,
+      "name": "Nisar E"
+    },
+    {
+      "id": 2,
+      "name": "Krishna Pandey"
+    },
+    {
+      "id": 3,
+      "name": "Sarvesh Verma"
+    },
+    {
+      "id": 4,
+      "name": "Sachin Jhadav"
+    },
+    {
+      "id": 5,
+      "name": "Pankaj Chandorkar"
+    },
+    {
+      "id": 6,
+      "name": "Glenna Reichert"
+    }
+  ],
+  "cities": [
+    { "cityName": "Hyderabad", "cityId": 1 },
+    { "cityName": "Ahmedabad", "cityId": 2 },
+    { "cityName": "Delhi", "cityId": 3 },
+    { "cityName": "Mumbai", "cityId": 4 },
+    { "cityName": "Bengaluru", "cityId": 5 },
+    { "cityName": "Chennai", "cityId": 6 },
+    { "cityName": "Kolkata", "cityId": 7 },
+    { "cityName": "Lucknow", "cityId": 8 },
+    { "cityName": "Jaipur", "cityId": 9 },
+    { "cityName": "Raipur", "cityId": 10 }
   ]
 }

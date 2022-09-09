@@ -167,16 +167,49 @@
         margin-left: 5px;
       }
 
-      & .fyiLable{
-        color:#666666;
-        font-size:12px;
-        padding-bottom:10px;
+      & .fyiLable {
+        color: #666666;
+        font-size: 12px;
+        padding-bottom: 10px;
       }
 
-      & .fyiText{
-        color:#202020;
-        font-size:13px;
+      & .fyiText {
+        color: #202020;
+        font-size: 13px;
+      }
+
+      & .lblamount,
+      & .lblpercent,
+      & .lbltds,
+      & .lblvouchergen {
+        font-size: 12px;
+        color: #444444;
+        font-weight: 600;
+      }
+
+      & .lblpercent {
+        padding-right: 5px;
+      }
+
+      & .lbltds {
+        padding-right: 10px;
+      }
+
+      & .rdoamount,
+      & .rdopercent {
+        padding: 5px;
+        &.Mui-checked {
+          color: #0185ff;
+        }
+      }
+
+      & .link{
+        color: #0185ff;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
       }
     }
+
   }
 }

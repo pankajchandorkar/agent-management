@@ -15,7 +15,7 @@ import TextBox from '../common/TextBox';
 
 function AddAgentDetailsForm(props) {
 
-    const {manageFinancialInfoTab} = props;
+    const { manageFinancialInfoTab } = props;
 
     const [agentTypeData, setAgentTypeData] = useState({ 'agentType': '', 'agentTypeId': '' });
     const [agentPAN, setAgentPAN] = useState("");
@@ -210,7 +210,7 @@ function AddAgentDetailsForm(props) {
         setAgentLegalNameGSTIN("");
     }, [agentGSTIN]);
 
-    const handelSaveMtplProceed = () =>{
+    const handelSaveMtplProceed = () => {
         manageFinancialInfoTab();
     }
 
@@ -396,25 +396,15 @@ function AddAgentDetailsForm(props) {
             <Box sx={{ padding: "15px 0 20px 0", fontSize: "13px" }}>
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 1.4 }}>
                     <Grid item xs={12} sm={6} md={2} >
-                        <TextBox label="Agent Start Date" name="startDate" calIcon={true} />
+                        <TextBox label="Agent Start Date" name="startDate" calIcon={true} disabled={true} />
                     </Grid>
                     <Grid item xs={12} sm={6} md={2} >
-                        <TextBox label="Agent Inactive From Date" name="inactiveDate" calIcon={true} />
+                        <TextBox label="Agent Inactive From Date" name="inactiveDate" calIcon={true} disabled={true} />
                     </Grid>
                     <Grid item xs={12} sm={6} md={2} >
-                        <TextBox label="Agent Blacklist From Date" name="blacklistDate" calIcon={true} />
+                        <TextBox label="Agent Blacklist From Date" name="blacklistDate" calIcon={true} disabled={true} />
                     </Grid>
                     <Grid item xs={12} sm={6} md={3} >
-
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={3} >
-
-                    </Grid>
-                </Grid>
-            </Box>
-            <Box sx={{ borderTop: "solid 1px #CCCCCC", padding: "15px 0 25px 0", fontSize: "13px" }}>
-                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 1.4 }}>
-                    <Grid item xs={9}>
 
                     </Grid>
                     <Grid item xs={1}>
