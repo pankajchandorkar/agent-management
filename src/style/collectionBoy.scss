@@ -1,0 +1,93 @@
+.collectionBoyAreaBindingForm {
+  & .heading {
+    font-weight: 600;
+    font-size: 13px;
+    color: #000000;
+    letter-spacing: 0.8px;
+  }
+
+  & .rightIcon {
+    width: 45px;
+    height: 45px;
+    border: solid 1px #0086ff;
+    background: #0086ff;
+    border-radius: 100%;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    &::before {
+      position: absolute;
+      content: "";
+      border-left: solid 7px transparent;
+      border-right: solid 7px transparent;
+      border-bottom: solid 12px white;
+      top: 15px;
+      left: 17px;
+      transform: rotate(90deg);
+    }
+  }
+
+  & .leftIcon {
+    width: 45px;
+    height: 45px;
+    border: solid 1px #0086ff;
+    background: #0086ff;
+    border-radius: 100%;
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+      position: absolute;
+      content: "";
+      border-left: solid 7px transparent;
+      border-right: solid 7px transparent;
+      border-bottom: solid 12px white;
+      top: 14px;
+      left: 16px;
+      transform: rotate(33deg);
+    }
+  }
+
+  & .areabox {
+    height: 280px;
+    width: 100%;
+    border: solid 1px #a9a9a9;
+    border-radius: 10px;
+    padding: 15px;
+    position: relative;
+  }
+
+  & .leftRightIcon {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 280px;
+  }
+
+  & .errorMessage {
+    background: #dcf2e5;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+  }
+
+  & .agentarea {
+    background: #ddf1e6;
+    color: #04732f;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+    padding: 8px 15px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.9px;
+  }
+}
