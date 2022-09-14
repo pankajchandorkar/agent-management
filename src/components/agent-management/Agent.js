@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Grid } from '@mui/material';
 
 import "../../style/agent.scss";
-import ViewAgents from "./ViewAgents";
-import AddAgents from "./AddAgents";
-import AddPersonalAgents from "./AddPersonalAgents";
+import ViewAgents from "./view-agent/ViewAgents";
+import AddAgents from "./add-agent/AddAgents";
+import AddPersonalAgents from "./add-personal-agent/AddPersonalAgents";
 
 function Agent() {
 

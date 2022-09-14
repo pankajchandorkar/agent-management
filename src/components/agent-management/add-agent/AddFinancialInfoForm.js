@@ -1,17 +1,22 @@
 import React, { useState } from 'react'
 import { Grid, Box, Button, Link } from '@mui/material';
-import TextBox from '../common/TextBox';
-import PaymentTypeAutocomplete from "../formik-form-components/PaymentTypeAutocomplete";
-import CommissionTypeAutocomplete from "../formik-form-components/CommissionTypeAutocomplete";
-import CollectionBoyAutocomplete from '../formik-form-components/CollectionBoyAutocomplete';
+import TextBox from '../../common/TextBox';
+import PaymentTypeAutocomplete from "../../formik-form-components/PaymentTypeAutocomplete";
+import CommissionTypeAutocomplete from "../../formik-form-components/CommissionTypeAutocomplete";
+import CollectionBoyAutocomplete from '../../formik-form-components/CollectionBoyAutocomplete';
 
 import Radio from '@mui/material/Radio';
 import Checkbox from "@mui/material/Checkbox";
-import CustomizedDialogs from '../common/CustomizedDialogs';
+import CustomizedDialogs from '../../common/CustomizedDialogs';
 import CollectionBoyAreaBindingForm from './CollectionBoyAreaBindingForm';
 
 
+import api from '../../../api/api';
+
+
 function AddFinancialInfoForm() {
+
+
 
     const [commInputLabel, setCommInputLabel] = useState("Amount");
     const [collectionBoyData, setCollectionBoyData] = useState({ 'collectionBoy': '', 'collectionBoyId': '' });
@@ -96,7 +101,18 @@ function AddFinancialInfoForm() {
         setCommInputLabel(newLabel);
     };
 
-    const handelSaveProceed = () => {
+    const handelSaveProceed = async (formData) => {
+
+        const response = await api.put('/collectionBoyAreaBind/1', formData)
+
+
+        if (response.data) {
+            console.log(response.data);
+        }
+
+
+        setShowDialog(false);
+
 
     }
 
@@ -287,7 +303,7 @@ function AddFinancialInfoForm() {
                 </Grid>
             </Box>
             <CustomizedDialogs open={showDialog} onClose={handleOnClose} titleText="Collection Boy - Area Binding">
-                <CollectionBoyAreaBindingForm />
+                <CollectionBoyAreaBindingForm onClose={handleOnClose} onSave={handelSaveProceed} />
             </CustomizedDialogs>
 
         </div>

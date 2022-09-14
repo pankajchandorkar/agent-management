@@ -6,7 +6,7 @@ import api from '../../api/api';
 
 const CollectionBoyAutocomplete = forwardRef((props, ref) => {
 
-    const { allOption = false, selectedValues = [], isFormikFormField = false, showFormError = false, ...rest } = props;
+    const { allOption = false, selectedValues = [], isFormikFormField = false, showFormError = false, cityId = undefined,filterBy="", ...rest } = props;
 
     let collectionBoyOptions = [];
     if (allOption) {
@@ -27,9 +27,16 @@ const CollectionBoyAutocomplete = forwardRef((props, ref) => {
     // Get Options
 
     useEffect(() => {
+
         const getCitiesOptions = async () => {
 
-            const getCollectionBoyParams = {  };
+            setDefaultProps({ ...defaultProps, dataLoaded: false });
+
+            const getCollectionBoyParams = {};
+
+            if (cityId > 0) {
+                getCollectionBoyParams.cityId = cityId;
+            }
 
             const response = await api.get("/collectionBoys", {
                 params: getCollectionBoyParams
@@ -59,7 +66,7 @@ const CollectionBoyAutocomplete = forwardRef((props, ref) => {
 
         getCitiesOptions();
 
-    }, []);
+    }, [cityId]);
 
     return (defaultProps.dataLoaded ?
         !isFormikFormField ?

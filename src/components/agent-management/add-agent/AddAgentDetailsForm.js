@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { Grid, Box, Button } from '@mui/material';
-import AgentTypeAutocomplete from "../formik-form-components/AgentTypeAutocomplete";
-import StateAutocomplete from '../formik-form-components/StateAutocomplete';
-import CityAutocomplete from '../formik-form-components/CityAutocomplete';
-import AreaAutocomplete from '../formik-form-components/AreaAutocomplete';
-import DivisionAutocomplete from '../formik-form-components/DivisionAutocomplete';
+import AgentTypeAutocomplete from "../../formik-form-components/AgentTypeAutocomplete";
+import StateAutocomplete from '../../formik-form-components/StateAutocomplete';
+import CityAutocomplete from '../../formik-form-components/CityAutocomplete';
+import AreaAutocomplete from '../../formik-form-components/AreaAutocomplete';
+import DivisionAutocomplete from '../../formik-form-components/DivisionAutocomplete';
 
 import Checkbox from "@mui/material/Checkbox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faAngleDoubleRight, faMap } from "@fortawesome/free-solid-svg-icons";
 
-import ColorPicker from '../common/ColorPicker';
-import TextBox from '../common/TextBox';
+import ColorPicker from '../../common/ColorPicker';
+import TextBox from '../../common/TextBox';
 
 function AddAgentDetailsForm(props) {
 

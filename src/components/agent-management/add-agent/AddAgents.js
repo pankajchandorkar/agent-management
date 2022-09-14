@@ -4,7 +4,7 @@ import { faCheck, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import AddAgentDetailsForm from "./AddAgentDetailsForm";
 import AddFinancialInfoForm from "./AddFinancialInfoForm";
 
-import "../../style/newAgents.scss";
+import "../../../style/newAgents.scss";
 
 function AddAgents() {
 

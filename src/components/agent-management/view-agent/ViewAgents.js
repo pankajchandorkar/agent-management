@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateLoading } from '../../redux/actions';
-import api from '../../api/api';
+import { updateLoading } from '../../../redux/actions';
+import api from '../../../api/api';
 import AgentFilter from './AgentFilter';
 import AgentResult from './AgentResult';
 
-import '../../style/viewAgents.scss';
+import '../../../style/viewAgents.scss';
 
 function ViewAgents() {
 

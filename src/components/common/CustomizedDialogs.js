@@ -15,7 +15,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
   "& .MuiDialogContent-root": {
     padding: 0,
-    borderBottom:"solid 1px #B2B2B2",
+    borderBottom: "solid 1px #B2B2B2",
   },
   "& .MuiDialogActions-root": {
     padding: theme.spacing(1),
@@ -29,9 +29,9 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     padding: "4px",
   },
   "& .MuiDialogActions-root": {
-    padding: "15px 10px 10px 5px!important",
-    display:"flex",
-    justifyContent:"flex-end!important",
+    padding: "15px 27px 10px 25px!important",
+    display: "flex",
+    justifyContent: "flex-end!important",
   },
 }));
 
@@ -65,11 +65,16 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function CustomizedDialogs(props) {
-  const { open, onClose, titleText = "", children } = props;
+  const { open, onClose, onSave, titleText = "", children } = props;
 
   const handleClose = () => {
     onClose(false);
   };
+
+  const handleSave = () => {
+
+    //onSave();
+  }
 
   return (
     <div>
@@ -77,7 +82,7 @@ export default function CustomizedDialogs(props) {
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
-        sx={{ '& .MuiDialog-paper': { width: '100%',maxWidth:"700px",height:"100%",borderRadius:'10px' } }}
+        sx={{ '& .MuiDialog-paper': { width: '100%', maxWidth: "700px", height: "100%", borderRadius: '10px' } }}
       >
         <BootstrapDialogTitle
           id="customized-dialog-title"
@@ -86,26 +91,6 @@ export default function CustomizedDialogs(props) {
           {titleText}
         </BootstrapDialogTitle>
         <DialogContent dividers>{children}</DialogContent>
-        <DialogActions>
-          <Button
-            style={{ padding: "6px 0px", width: "100px" }}
-            variant="outlined"
-            size="medium"
-            className="btn-orange-outline"
-            onClick={handleClose}
-          >
-            Cancel
-          </Button>
-          <Button
-            style={{ padding: "6px 0px", width: "100px" }}
-            variant="contained"
-            size="medium"
-            className="btn-orange"
-            onClick={handleClose}
-          >
-            Save
-          </Button>
-        </DialogActions>
       </BootstrapDialog>
     </div>
   );

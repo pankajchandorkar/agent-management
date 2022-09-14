@@ -5,7 +5,7 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
-import api from "../../api/api";
+import api from "../../../api/api";
 
 import { Paper } from "@mui/material";
 import TableContainer from "@mui/material/TableContainer";
@@ -13,8 +13,8 @@ import Table from "@mui/material/Table";
 import AgentTableHead from "./AgentTableHead";
 import AgentTableBody from "./AgentTableBody"
 import AgentTablePagination from "./AgentTablePagination";
-import ExportToExcel from "../common/ExportToExcel";
-import ConfirmationDialogRaw from "../common/ConfirmationDialogRaw";
+import ExportToExcel from "../../common/ExportToExcel";
+import ConfirmationDialogRaw from "../../common/ConfirmationDialogRaw";
 
 const columns = [
   { header: 'Mobile No.', key: 'mobile', align: 'center' },

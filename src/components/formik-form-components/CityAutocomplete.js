@@ -6,7 +6,7 @@ import api from '../../api/api';
 
 const CityAutocomplete = forwardRef((props, ref) => {
 
-    const { allOption = false, selectedValues = [], stateId = undefined, isFormikFormField = false, showFormError = false, ...rest } = props;
+    const { allOption = false, selectedValues = [], stateId = undefined, cityId = undefined, filterBy = "", isFormikFormField = false, showFormError = false, forHoldCityData = undefined, ...rest } = props;
     let cityOptions = [];
     if (allOption) {
         cityOptions.push({ cityName: 'All Cities', cityId: 0 });
@@ -29,7 +29,13 @@ const CityAutocomplete = forwardRef((props, ref) => {
 
         const getCitiesOptions = async () => {
 
+            setDefaultProps({ ...defaultProps, dataLoaded: false });
+
             const getCityParams = { stateId };
+
+            if (cityId > 0) {
+                getCityParams.cityId = cityId;
+            }
 
             const response = await api.get("/cities", {
                 params: getCityParams
@@ -54,17 +60,18 @@ const CityAutocomplete = forwardRef((props, ref) => {
                 const newProps = { ...defaultProps, options: newOptions, preSelectedValues, dataLoaded: true }
 
                 setDefaultProps(newProps);
+                forHoldCityData != undefined && (forHoldCityData(preSelectedValues));
             }
         }
 
         //if (stateId && stateId > 0) {
-            getCitiesOptions();
-       /*  } else {
-            const newProps = { ...defaultProps, options: cityOptions, dataLoaded: true }
-            setDefaultProps(newProps);
-        } */
+        getCitiesOptions();
+        /*  } else {
+             const newProps = { ...defaultProps, options: cityOptions, dataLoaded: true }
+             setDefaultProps(newProps);
+         } */
 
-    }, []);
+    }, [cityId]);
 
     return (defaultProps.dataLoaded ?
         !isFormikFormField ?

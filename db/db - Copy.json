@@ -15,8 +15,8 @@
       "state": "Andhra Pradesh",
       "city": "Hyderabad",
       "status": "Active",
-      "balance": "â‚¹ 10000",
-      "credit": "â‚¹ 5000",
+      "balance": "₹ 10000",
+      "credit": "₹ 5000",
       "createdDt": "2022-01-01"
     },
     {
@@ -33,7 +33,7 @@
       "country": "India",
       "state": "Andhra Pradesh",
       "city": "Hyderabad",
-      "status": "Inactive",
+      "status": "Active",
       "balance": "₹ 10000",
       "credit": "₹ 5000",
       "createdDt": "2021-01-01"
@@ -52,7 +52,7 @@
       "country": "India",
       "state": "Gujrat",
       "city": "Ahmedabad",
-      "status": "Inactive",
+      "status": "Active",
       "balance": "₹ 10000",
       "credit": "₹ 5000",
       "createdDt": "2021-08-11"
@@ -71,7 +71,7 @@
       "country": "India",
       "state": "Andhra Pradesh",
       "city": "Hyderabad",
-      "status": "Inactive",
+      "status": "Active",
       "balance": "₹ 10000",
       "credit": "₹ 5000",
       "createdDt": "2021-05-19"
@@ -341,6 +341,275 @@
       "balance": "₹ 10000",
       "credit": "₹ 5000",
       "createdDt": "2022-08-25"
+    }
+  ],
+  "collectionBoys": [
+    {
+      "id": 1,
+      "name": "Nisar E",
+      "cityId": 5
+    },
+    {
+      "id": 2,
+      "name": "Krishna Pandey",
+      "cityId": 5
+    },
+    {
+      "id": 3,
+      "name": "Sarvesh Verma",
+      "cityId": 3
+    },
+    {
+      "id": 4,
+      "name": "Sachin Jhadav",
+      "cityId": 4
+    },
+    {
+      "id": 5,
+      "name": "Pankaj Chandorkar",
+      "cityId": 4
+    },
+    {
+      "id": 6,
+      "name": "Glenna Reichert",
+      "cityId": 4
+    }
+  ],
+  "cities": [
+    {
+      "cityName": "Hyderabad",
+      "cityId": 1
+    },
+    {
+      "cityName": "Ahmedabad",
+      "cityId": 2
+    },
+    {
+      "cityName": "Delhi",
+      "cityId": 3
+    },
+    {
+      "cityName": "Mumbai",
+      "cityId": 4
+    },
+    {
+      "cityName": "Bengaluru",
+      "cityId": 5
+    },
+    {
+      "cityName": "Chennai",
+      "cityId": 6
+    },
+    {
+      "cityName": "Kolkata",
+      "cityId": 7
+    },
+    {
+      "cityName": "Lucknow",
+      "cityId": 8
+    },
+    {
+      "cityName": "Jaipur",
+      "cityId": 9
+    },
+    {
+      "cityName": "Raipur",
+      "cityId": 10
+    }
+  ],
+  "areas": [
+    {
+      "cityId": 4,
+      "area": "Agripada",
+      "areaId": 1
+    },
+    {
+      "cityId": 4,
+      "area": "Andheri East",
+      "areaId": 2
+    },
+    {
+      "cityId": 4,
+      "area": "Antop Hill",
+      "areaId": 3
+    },
+    {
+      "cityId": 4,
+      "area": "Bazargate",
+      "areaId": 4
+    },
+    {
+      "cityId": 4,
+      "area": "Chinchpokli",
+      "areaId": 5
+    },
+    {
+      "cityId": 4,
+      "area": "Colaba",
+      "areaId": 6
+    },
+    {
+      "cityId": 4,
+      "area": "Dadar",
+      "areaId": 7
+    },
+    {
+      "cityId": 4,
+      "area": "Dharavi",
+      "areaId": 8
+    },
+    {
+      "cityId": 4,
+      "area": "Girgaon",
+      "areaId": 9
+    },
+    {
+      "cityId": 4,
+      "area": "Haji Ali",
+      "areaId": 10
+    },
+    {
+      "cityId": 5,
+      "area": "Anjanapura",
+      "areaId": 12
+    },
+    {
+      "cityId": 5,
+      "area": "Chandapura",
+      "areaId": 13
+    },
+    {
+      "cityId": 5,
+      "area": "Hulimavu",
+      "areaId": 14
+    },
+    {
+      "cityId": 5,
+      "area": "Thyagarajnagar",
+      "areaId": 15
+    },
+    {
+      "cityId": 5,
+      "area": "Tavarekere",
+      "areaId": 16
+    },
+    {
+      "cityId": 5,
+      "area": "Epip",
+      "areaId": 17
+    },
+    {
+      "cityId": 5,
+      "area": "Kodigehalli",
+      "areaId": 18
+    },
+    {
+      "cityId": 3,
+      "area": "Anand Parbat",
+      "areaId": 19
+    },
+    {
+      "cityId": 3,
+      "area": "Baroda House",
+      "areaId": 20
+    },
+    {
+      "cityId": 3,
+      "area": "Bengali Market",
+      "areaId": 21
+    },
+    {
+      "cityId": 3,
+      "area": "Darya Ganj",
+      "areaId": 22
+    },
+    {
+      "cityId": 3,
+      "area": "Gandhi Smarak Nidhi",
+      "areaId": 23
+    }
+  ],
+  "collectionBoyAreaBind": [
+    {
+      "agentId": 1,
+      "collectionBoy": {
+        "id": 4,
+        "name": "Sachin Jhadav",
+        "cityId": 4
+      },
+      "collectionCity": {
+        "name": "Mumbai",
+        "id": 4
+      },
+      "collectionArea": [
+        {
+          "cityId": 4,
+          "area": "Agripada",
+          "areaId": 1
+        },
+        {
+          "cityId": 4,
+          "area": "Andheri East",
+          "areaId": 2
+        },
+        {
+          "cityId": 4,
+          "area": "Antop Hill",
+          "areaId": 3
+        },
+        {
+          "cityId": 4,
+          "area": "Bazargate",
+          "areaId": 4
+        },
+        {
+          "cityId": 4,
+          "area": "Chinchpokli",
+          "areaId": 5
+        },
+        {
+          "cityId": 4,
+          "area": "Colaba",
+          "areaId": 6
+        },
+        {
+          "cityId": 4,
+          "area": "Dadar",
+          "areaId": 7
+        },
+        {
+          "cityId": 4,
+          "area": "Dharavi",
+          "areaId": 8
+        },
+        {
+          "cityId": 4,
+          "area": "Girgaon",
+          "areaId": 9
+        },
+        {
+          "cityId": 4,
+          "area": "Haji Ali",
+          "areaId": 10
+        }
+      ],
+      "collectionSelectedArea": [
+        {
+          "area": "Haji Ali",
+          "areaId": 10
+        },
+        {
+          "area": "Dadar",
+          "areaId": 7
+        }
+      ],
+      "id": 1
+    }
+  ],
+  "articles": [
+    {
+      "title": "React PUT Request Example 2212345",
+      "id": 1
     }
   ]
 }
