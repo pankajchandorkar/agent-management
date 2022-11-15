@@ -82,7 +82,7 @@ function AddAgentDetailsForm(props) {
             allOption: false,
             isCompulsory: false,
             singleSelect: true,
-            selectedValues: [],
+            selectedValues: [4],
         }
     }
 
@@ -97,7 +97,7 @@ function AddAgentDetailsForm(props) {
             allOption: false,
             isCompulsory: false,
             singleSelect: true,
-            selectedValues: [],
+            selectedValues: [8],
         }
     }
 
@@ -134,9 +134,9 @@ function AddAgentDetailsForm(props) {
 
     const onCityChange = (selectedCity) => {
         if (selectedCity.length > 0) {
-            setAgentStateData((prevData) => ({ ...prevData, 'agentState': selectedCity[0].cityName, 'agentStateId': selectedCity[0].cityId }));
+            setAgentCityData((prevData) => ({ ...prevData, 'agentCity': selectedCity[0].cityName, 'agentCityId': selectedCity[0].cityId }));
         } else {
-            setAgentStateData((prevData) => ({ ...prevData, 'agentState': '', 'agentStateId': '' }));
+            setAgentCityData((prevData) => ({ ...prevData, 'agentCity': '', 'agentCityId': '' }));
         }
     }
 

@@ -37,13 +37,27 @@ const CssTextField = styled(TextField)({
         '&.Mui-focused fieldset': {
             borderColor: '#0085FE',
         },
+
+        '& input[type=number]': {
+            'MozAppearance': 'textfield',
+            padding: '9px 9px'
+        },
+        '& input[type=number]::-webkit-outer-spin-button': {
+            'WebkitAppearance': 'none',
+            margin: 0
+        },
+        '& input[type=number]::-webkit-inner-spin-button': {
+            'WebkitAppearance': 'none',
+            margin: 0
+        }
     },
+
 });
 
 
 function TextBox(props) {
 
-    const { label = "", value = '', handleOnChange = null, disabled = false, name, isCompulsory = false, calIcon = false } = props;
+    const { type, label = "", value = '', handleOnChange = null, disabled = false, name, isCompulsory = false, calIcon = false, rssign = false, textBoxRef } = props;
 
     const [inputValue, setInputValue] = useState(value);
 
@@ -55,7 +69,8 @@ function TextBox(props) {
 
     const handleInputOnChange = (e) => {
         let newVal = e.target.value;
-        // console.log(newVal);
+        //console.log(e.target.type);
+        //console.log(newVal);
         setInputValue(newVal);
         if (handleOnChange) {
             handleOnChange(e, newVal)
@@ -82,6 +97,7 @@ function TextBox(props) {
     return (
         <CssTextField
             fullWidth
+            type={type}
             name={name}
             id={name}
             label={labelTxt}
@@ -89,6 +105,7 @@ function TextBox(props) {
             value={inputValue}
             onChange={handleInputOnChange}
             size="small"
+            inputRef={textBoxRef}
             InputProps={{
                 autoComplete: "off",
                 startAdornment: (calIcon ? <InputAdornment position="start">
@@ -96,7 +113,8 @@ function TextBox(props) {
                         icon={faCalendarDays}
                         className="cross"
                         style={{ fontSize: "18px" }}
-                        color={"#0085fe"} /></InputAdornment> : null
+                        color={"#0085fe"} /></InputAdornment> : rssign ? "Rs"
+                         : null
                 ),
                 endAdornment: (disabled ? null : <InputAdornment position="end">
                     {inputValue.length > 0 && <div className="cross--icon"><FontAwesomeIcon icon={faXmark} className="cross" onClick={clearInput} /> </div>}

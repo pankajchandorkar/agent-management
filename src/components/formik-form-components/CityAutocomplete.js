@@ -6,7 +6,7 @@ import api from '../../api/api';
 
 const CityAutocomplete = forwardRef((props, ref) => {
 
-    const { allOption = false, selectedValues = [], stateId = undefined, cityId = undefined, filterBy = "", isFormikFormField = false, showFormError = false, forHoldCityData = undefined, ...rest } = props;
+    const { allOption = false, selectedValues = [], stateId = undefined, cityId = undefined, isFormikFormField = false, showFormError = false, forHoldCityData = undefined, ...rest } = props;
     let cityOptions = [];
     if (allOption) {
         cityOptions.push({ cityName: 'All Cities', cityId: 0 });
@@ -32,10 +32,6 @@ const CityAutocomplete = forwardRef((props, ref) => {
             setDefaultProps({ ...defaultProps, dataLoaded: false });
 
             const getCityParams = { stateId };
-
-            if (cityId > 0) {
-                getCityParams.cityId = cityId;
-            }
 
             const response = await api.get("/cities", {
                 params: getCityParams
@@ -65,13 +61,18 @@ const CityAutocomplete = forwardRef((props, ref) => {
         }
 
         //if (stateId && stateId > 0) {
+
         getCitiesOptions();
+
+
         /*  } else {
              const newProps = { ...defaultProps, options: cityOptions, dataLoaded: true }
              setDefaultProps(newProps);
          } */
 
-    }, [cityId]);
+
+    }, []);
+
 
     return (defaultProps.dataLoaded ?
         !isFormikFormField ?

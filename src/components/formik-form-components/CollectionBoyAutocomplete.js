@@ -6,7 +6,7 @@ import api from '../../api/api';
 
 const CollectionBoyAutocomplete = forwardRef((props, ref) => {
 
-    const { allOption = false, selectedValues = [], isFormikFormField = false, showFormError = false, cityId = undefined,filterBy="", ...rest } = props;
+    const { allOption = false, selectedValues = [], isFormikFormField = false, showFormError = false, cityId = undefined, ...rest } = props;
 
     let collectionBoyOptions = [];
     if (allOption) {

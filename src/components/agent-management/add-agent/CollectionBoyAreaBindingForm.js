@@ -20,7 +20,6 @@ function CollectionBoyAreaBindingForm(props) {
         "collectionBoy": {
             "id": "",
             "name": "",
-            "cityId": "",
         },
         "collectionCity": {
             "id": "",
@@ -29,6 +28,10 @@ function CollectionBoyAreaBindingForm(props) {
         "collectionArea": [],
         "collectionSelectedArea": []
     };
+
+    const [agentArea, setAgentArea] = useState("");
+    const [leftSideAgentArea, setLeftSideAgentArea] = useState(true);
+    const [rightSideAgentArea, setRightSideAgentArea] = useState(false);
 
     const [collectionBoyData, setCollectionBoyData] = useState(initData);
     const [filterBy, setFilterBy] = useState("");
@@ -41,16 +44,13 @@ function CollectionBoyAreaBindingForm(props) {
     const getCollectionBoyProps = () => {
 
         let cityId = -1;
-        if (filterBy !== "CollectionBoy") {
-            const { id } = collectionBoyData.collectionCity;
-            cityId = id != "" ? id : -1;
-        }
+        let defaultSelectedVal = -1;
 
-        let defaultSelectedVal = null;
-
-        if (formMode === "Edit") {
+        if (formMode === "Add") {
+            cityId = collectionBoyData.collectionCity.id;
+        } else if (formMode === "Edit") {
+            cityId = collectionBoyData.collectionCity.id;
             defaultSelectedVal = collectionBoyData.collectionBoy.id;
-            cityId = collectionBoyData.collectionBoy.cityId;
         }
 
         return {
@@ -63,7 +63,6 @@ function CollectionBoyAreaBindingForm(props) {
             isCompulsory: false,
             singleSelect: true,
             cityId: cityId,
-            filterBy: filterBy,
             selectedValues: [defaultSelectedVal],
         }
     }
@@ -71,49 +70,40 @@ function CollectionBoyAreaBindingForm(props) {
     //for city
     const getCityProps = () => {
 
-        let selectedCity = -1;
-        if (filterBy !== "City") {
-            const { cityId } = collectionBoyData.collectionBoy;
-            selectedCity = cityId != "" ? cityId : -1;
-        }
-
         return {
             id: 'collectionBoyCityId',
-            label: 'City',
+            label: 'Agent City',
             name: 'collectionBoyCityId',
             searchPlaceholder: "Search By City Name",
             noDataLabel: "No City Found",
             allOption: false,
             isCompulsory: false,
             singleSelect: true,
-            cityId: selectedCity,
-            filterBy: filterBy,
-            selectedValues: [selectedCity],
         }
     }
 
     const onCollectionBoyChange = (selectedData) => {
         if (selectedData.length > 0) {
-            setCollectionBoyData((prevData) => ({ ...prevData, collectionBoy: { name: selectedData[0].name, id: selectedData[0].id, cityId: selectedData[0].cityId } }));
+            setCollectionBoyData((prevData) => ({ ...prevData, collectionBoy: { name: selectedData[0].name, id: selectedData[0].id } }));
         } else {
-            setCollectionBoyData((prevData) => ({ ...prevData, collectionBoy: { name: '', id: '', cityId: '' } }));
+            setCollectionBoyData((prevData) => ({ ...prevData, collectionBoy: { name: '', id: '' } }));
         }
         clearFormData();
     }
 
     const onCityChange = (selectedData) => {
-        if (selectedData.length > 0) {
-            setCollectionBoyData((prevData) => ({ ...prevData, 'collectionCity': { name: selectedData[0].cityName, id: selectedData[0].cityId } }));
-        } else {
-            setCollectionBoyData((prevData) => ({ ...prevData, 'collectionCity': { name: '', id: '' } }));
-        }
-        clearFormData();
+        /*  if (selectedData.length > 0) {
+             setCollectionBoyData((prevData) => ({ ...prevData, 'collectionCity': { name: selectedData[0].cityName, id: selectedData[0].cityId } }));
+         } else {
+             setCollectionBoyData((prevData) => ({ ...prevData, 'collectionCity': { name: '', id: '' } }));
+         }
+         clearFormData(); */
     }
 
     useEffect(() => {
 
-        const { collectionBoy, collectionCity } = collectionBoyData;
-        const cBoyId = collectionBoy.id;
+        const { collectionBoy, collectionCity, collectionSelectedArea } = collectionBoyData;
+        /* const cBoyId = collectionBoy.id;
         const cCityId = collectionCity.id;
 
         if (filterBy === "") {
@@ -127,17 +117,25 @@ function CollectionBoyAreaBindingForm(props) {
             if (cBoyId === "" && cCityId === "") {
                 setFilterBy("");
             } else if (filterBy === "City" && cCityId === "") {
-                setCollectionBoyData((prevData) => ({ ...prevData, collectionBoy: { name: '', id: '', cityId: '' } }));
+                setCollectionBoyData((prevData) => ({ ...prevData, collectionBoy: { name: '', id: '' } }));
                 setFilterBy("");
             } else if (filterBy === "CollectionBoy" && cBoyId === "") {
                 setCollectionBoyData((prevData) => ({ ...prevData, 'collectionCity': { name: '', id: '' } }));
                 setFilterBy("");
             }
+        } */
+
+        setLeftSideAgentArea(true);
+        setRightSideAgentArea(false);
+
+        if (collectionSelectedArea.length) {
+            collectionSelectedArea.map((selArea) => {
+                if (agentArea != "" && agentArea === selArea.area) {
+                    setRightSideAgentArea(true);
+                    setLeftSideAgentArea(false);
+                }
+            });
         }
-
-
-
-
     }, [collectionBoyData]);
 
     //for filter by collection boy city auto select
@@ -166,8 +164,6 @@ function CollectionBoyAreaBindingForm(props) {
             if (response.data) {
                 setCollectionBoyData((prevData) => ({ ...prevData, 'collectionArea': response.data }));
             }
-            
-
         } else {
             alert("Collection Boy & City should not be empty !");
         }
@@ -245,7 +241,7 @@ function CollectionBoyAreaBindingForm(props) {
                     params: params
                 });
 
-                if (response.data) {
+                if (response.data.length > 0) {
 
                     setFormMode("Edit");
                     setFilterBy("CollectionBoy");
@@ -258,7 +254,6 @@ function CollectionBoyAreaBindingForm(props) {
                         "collectionBoy": {
                             "id": collectionBoy.id,
                             "name": collectionBoy.name,
-                            "cityId": collectionCity.id,
                         },
                         "collectionCity": {
                             "id": collectionCity.id,
@@ -268,23 +263,40 @@ function CollectionBoyAreaBindingForm(props) {
                         "collectionSelectedArea": collectionSelectedArea
                     };
 
-                    if (collectionArea.length) {
+                    /* if (collectionArea.length) {
                         setSelectedAreaId(collectionArea[0].areaId);
                     }
 
                     if (collectionSelectedArea.length) {
                         setSelectedAreaForBoy({ areaId: collectionSelectedArea[0].areaId, area: collectionSelectedArea[0].area });
-                    }
+                    } */
 
                     setCollectionBoyData(editData);
+
+                } else {
+                    const addData = {
+                        "agentId": 1,
+                        "collectionBoy": {
+                            "id": "",
+                            "name": "",
+                        },
+                        "collectionCity": {
+                            "id": 4,
+                            "name": "Mumbai",
+                        },
+                        "collectionArea": [],
+                        "collectionSelectedArea": []
+                    };
+                    setCollectionBoyData(addData);
                 }
             }
         }
 
         getAgentCollectionBoyDetails();
 
-    }, []);
+        setAgentArea("Dharavi");
 
+    }, []);
 
     const handleClose = () => {
         onClose(false);
@@ -299,20 +311,23 @@ function CollectionBoyAreaBindingForm(props) {
             <Box sx={{ padding: "12px 25px", background: "#E5F3FE" }}>
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 1.4 }}>
                     <Grid item xs={12} sm={5} md={5} >
+                        {collectionBoyData.collectionCity.id && (<CityAutocomplete
+                            {...getCityProps()}
+                            ref={cityRef}
+                            disabled={true}
+                            selectedValues={[collectionBoyData.collectionCity.id]}
+                            onSelect={(selectedData) => { onCityChange(selectedData) }}
+                            onRemove={(selectedData) => { onCityChange(selectedData) }}
+                            forHoldCityData={(data) => { forHoldCityData(data) }} />)}
+
+                    </Grid>
+                    <Grid item xs={12} sm={5} md={5} >
                         <CollectionBoyAutocomplete
                             {...getCollectionBoyProps()}
                             ref={cBoyRef}
                             onSelect={(selectedData) => { onCollectionBoyChange(selectedData) }}
                             onRemove={(selectedData) => { onCollectionBoyChange(selectedData) }}
                         />
-                    </Grid>
-                    <Grid item xs={12} sm={5} md={5} >
-                        <CityAutocomplete
-                            {...getCityProps()}
-                            ref={cityRef}
-                            onSelect={(selectedData) => { onCityChange(selectedData) }}
-                            onRemove={(selectedData) => { onCityChange(selectedData) }}
-                            forHoldCityData={(data) => { forHoldCityData(data) }} />
                     </Grid>
                     <Grid item xs={12} sm={2} md={2} >
                         <Button style={{ padding: "6px 0px" }} variant="contained" size="medium" className="btn-orange" onClick={handelLoadArea}>Load Area</Button>
@@ -321,13 +336,13 @@ function CollectionBoyAreaBindingForm(props) {
             </Box>
             <Box sx={{ padding: "12px 25px", minHeight: "365px" }}>
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 1 }}>
-                    <Grid item xs={12} sm={6} md={5.5} >
-                        <span className="heading">All Agent Area List</span>
+                    <Grid item xs={12} sm={5.5} md={5.5} >
+                        <span className="heading">All Agent Area List For: {collectionBoyData.collectionCity.name}</span>
                     </Grid>
-                    <Grid item xs={12} sm={6} md={1} >
+                    <Grid item xs={12} sm={1} md={1} >
 
                     </Grid>
-                    <Grid item xs={12} sm={6} md={5.5} >
+                    <Grid item xs={12} sm={5.5} md={5.5} >
                         <span className="heading">Selected Agent Area for Collection Boy</span>
                     </Grid>
                 </Grid>
@@ -344,15 +359,40 @@ function CollectionBoyAreaBindingForm(props) {
                 <Grid sx={{ paddingTop: "5px" }} container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 1 }}>
                     <Grid item xs={12} sm={5.5} md={5.5} >
                         <Box className="areabox">
-                            <div className="agentarea">
-                                Agent Area: Swargate
-                            </div>
-                            <div className="agentAreaList">
+                            {
+                                leftSideAgentArea && (
+                                    <div className="agentarea">
+                                        Select Agent Area: {agentArea}
+                                    </div>
+                                )
+                            }
+                            <div className={`agentAreaList ${!leftSideAgentArea ? 'extended':''}`}>
                                 {collectionBoyData.collectionArea.length > 0 && (
                                     collectionBoyData.collectionArea.map((area, index) => {
-                                        return (<div className={`areaListItem ${selectedAreaId === area.areaId ? 'active' : ''}`} onClick={() => { setSelectedAreaId(area.areaId) }} key={"agent-area-" + area.areaId}>{area.area}</div>)
+                                        let inArr = false;
+                                        {
+                                            if (collectionBoyData.collectionSelectedArea.length > 0) {
+                                                let selAreaObj = collectionBoyData.collectionSelectedArea.filter((selArea) => {
+                                                    return selArea.areaId === area.areaId
+                                                });
+                                                if (selAreaObj.length > 0) {
+                                                    inArr = true;
+                                                }
+                                            }
+                                        }
+                                        return (
+                                            <div
+                                                className={`areaListItem ${selectedAreaId === area.areaId ? 'active' : ''} ${inArr ? 'selColBoyArea' : ''}`}
+                                                onClick={() => { setSelectedAreaId(area.areaId) }}
+                                                key={"agent-area-" + area.areaId}>
+                                                {area.area}{inArr}
+                                            </div>
+                                        )
                                     })
                                 )}
+
+                               
+
                             </div>
                         </Box>
                     </Grid>
@@ -364,16 +404,16 @@ function CollectionBoyAreaBindingForm(props) {
                     </Grid>
                     <Grid item xs={12} sm={5.5} md={5.5} >
                         <Box className="areabox">
-                            <div className="agentarea">
-                                Selected Agent Area: {selectedAreaForBoy.area}
-                            </div>
-                            <div className="agentAreaListSelected">
-
+                            {rightSideAgentArea && (
+                                <div className="agentarea">Selected Agent Area: {agentArea}</div>
+                            )}
+                            <div className={`agentAreaListSelected ${!rightSideAgentArea ? 'extended':''}`}>
                                 {collectionBoyData.collectionSelectedArea.length > 0 && (
                                     collectionBoyData.collectionSelectedArea.map((area, index) => {
                                         return (<div className={`areaListSelItem ${selectedAreaForBoy.areaId === area.areaId ? 'active' : ''}`} onClick={() => { handelSelectedAreaForBoy(area.areaId, area.area) }} key={"sel-agent-area-" + area.areaId}>{area.area}</div>)
                                     })
                                 )}
+                                
 
                             </div>
                         </Box>

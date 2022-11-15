@@ -10,18 +10,15 @@ import Checkbox from "@mui/material/Checkbox";
 import CustomizedDialogs from '../../common/CustomizedDialogs';
 import CollectionBoyAreaBindingForm from './CollectionBoyAreaBindingForm';
 
-
 import api from '../../../api/api';
 
+function AddFinancialInfoForm(props) {
 
-function AddFinancialInfoForm() {
-
-
+    const { managePoliciesRightsTab } = props;
 
     const [commInputLabel, setCommInputLabel] = useState("Amount");
     const [collectionBoyData, setCollectionBoyData] = useState({ 'collectionBoy': '', 'collectionBoyId': '' });
     const [showDialog, setShowDialog] = useState(false);
-
 
     //for payment type
     const getFilterPaymentTypeProps = () => {
@@ -101,23 +98,20 @@ function AddFinancialInfoForm() {
         setCommInputLabel(newLabel);
     };
 
-    const handelSaveProceed = async (formData) => {
-
+    const handelCollectionBoyAreaBindingSave = async (formData) => {
         const response = await api.put('/collectionBoyAreaBind/1', formData)
-
-
         if (response.data) {
             console.log(response.data);
         }
-
-
         setShowDialog(false);
-
-
     }
 
     const handleOnClose = (props) => {
         setShowDialog(props);
+    }
+
+    const handelFinancialInfoSave = () => {
+        managePoliciesRightsTab();
     }
 
     return (
@@ -298,12 +292,12 @@ function AddFinancialInfoForm() {
                         <Button variant="outlined" size="medium" className="btn-orange-outline" >Cancel</Button>
                     </Grid>
                     <Grid item xs={1.5}>
-                        <Button style={{ padding: "6px 0px" }} variant="contained" size="medium" className="btn-orange" onClick={handelSaveProceed}>Save & Proceed</Button>
+                        <Button style={{ padding: "6px 0px" }} variant="contained" size="medium" className="btn-orange" onClick={handelFinancialInfoSave}>Save & Proceed</Button>
                     </Grid>
                 </Grid>
             </Box>
             <CustomizedDialogs open={showDialog} onClose={handleOnClose} titleText="Collection Boy - Area Binding">
-                <CollectionBoyAreaBindingForm onClose={handleOnClose} onSave={handelSaveProceed} />
+                <CollectionBoyAreaBindingForm onClose={handleOnClose} onSave={handelCollectionBoyAreaBindingSave} />
             </CustomizedDialogs>
 
         </div>

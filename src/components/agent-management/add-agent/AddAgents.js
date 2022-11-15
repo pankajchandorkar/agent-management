@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import AddAgentDetailsForm from "./AddAgentDetailsForm";
 import AddFinancialInfoForm from "./AddFinancialInfoForm";
+import AddPoliciesRights from "./AddPoliciesRights";
 
 import "../../../style/newAgents.scss";
 
@@ -20,6 +21,11 @@ function AddAgents() {
   const manageFinancialInfoTab = () => {
     setAgentFormActiveTab("FinancialInfo");
     setAdTabDone("completed");
+  }
+
+  const managePoliciesRightsTab = () => {
+    setAgentFormActiveTab("Policies");
+    fiTabDone("completed");
   }
 
   return (
@@ -101,7 +107,8 @@ function AddAgents() {
       </div>
       <div className="agentFormTabContentWrap">
         {agentFormActiveTab === "AgentDetails" && (<AddAgentDetailsForm manageFinancialInfoTab={manageFinancialInfoTab} />)}
-        {agentFormActiveTab === "FinancialInfo" && (<AddFinancialInfoForm />)}
+        {agentFormActiveTab === "FinancialInfo" && (<AddFinancialInfoForm managePoliciesRightsTab={managePoliciesRightsTab} />)}
+        {agentFormActiveTab === "Policies" && (<AddPoliciesRights />)}
       </div>
     </div>
   );
